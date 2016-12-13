@@ -47,15 +47,21 @@ int main(int argc, char** argv)
         break;
         case 2:
           printf("TEST2");
-          FILE* fichier1 = NULL;
-          int  c1 =0;
-          fichier1 = fopen("EXIASAVER1_PBM/1.pbm", "r");
+          FILE* fichier2 = NULL;
+          int caractereActuel2 = 0;
 
-          c1 = fgetc(fichier1);
-          printf("%c", c1);
-          while (c1 != EOF);
-          fclose(fichier1);
-          getchar();
+          fichier2 = fopen("EXIASAVER1_PBM/2.pbm", "r");
+
+          if (fichier != NULL)
+          {
+            do
+            {
+              caractereActuel2 = fgetc(fichier2);
+              printf("%c", caractereActuel2);
+            } while (caractereActuel2 != EOF);
+
+            fclose(fichier2);
+          }
         break;
         case 3:
           printf("TEST3");
