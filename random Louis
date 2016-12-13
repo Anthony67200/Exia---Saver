@@ -1,3 +1,72 @@
-	int random;
- 	srand (time(NULL));
-  ;random = rand()%3+1;
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h> // Bibliothèque pour le Rand
+#include <sys/stat.h>
+#include "launcher.h"
+
+int main(int argc, char** argv)
+{
+    if(argv[1]=="-stat")
+    {
+      printf("Programme menu Stat");
+    }
+
+    system("clear"); // Permet de nettoyer la console
+    /*--------Nombre Random--------*/
+    srand (time(NULL));
+    int choix=rand()%3+1;
+
+    int ch_image;
+    ch_image = rand()%4+1;
+
+    /*--------Condition en fonction du mode choisis--------*/
+
+    if (choix == 1)
+    {
+      printf("Lancement du type statique ! \n");
+      switch (ch_image)
+      {
+        case 1:
+          printf("TEST1");
+          FILE* fichier = NULL;
+          int  c =0;
+          fichier = fopen("EXIASAVER1_PBM/1.pbm", "r");
+
+          c = fgetc(fichier);
+          printf("%c", c);
+          while (c != EOF);
+
+          fclose(fichier);
+        break;
+        case 2:
+          printf("TEST2");
+          FILE* fichier1 = NULL;
+          int  c1 =0;
+          fichier1 = fopen("EXIASAVER1_PBM/1.pbm", "r");
+
+          c1 = fgetc(fichier1);
+          printf("%c", c1);
+          while (c1 != EOF);
+
+          fclose(fichier1);
+        break;
+        case 3:
+          printf("TEST3");
+        break;
+        case 4:
+          printf("TEST4");
+        break;
+      }
+    }
+    else if (choix == 2)
+    {
+      printf("Lancement du type dynamique ! \n");
+    }
+    else
+    {
+      printf("Lancement du type intéractif ! \n");
+    }
+
+
+return 0;
+}
