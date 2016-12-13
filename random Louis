@@ -17,7 +17,7 @@ int main(int argc, char** argv)
     int choix=rand()%3+1;
 
     int ch_image;
-    ch_image = rand()%2+1;
+    ch_image = rand()%5+1;
 
     /*--------Condition en fonction du mode choisis--------*/
 
@@ -28,12 +28,9 @@ int main(int argc, char** argv)
       {
         case 1:
           printf("TEST1");
-
           FILE* fichier = NULL;
           int caractereActuel = 0;
-
           fichier = fopen("EXIASAVER1_PBM/1.pbm", "r");
-
           if (fichier != NULL)
           {
             do
@@ -41,7 +38,6 @@ int main(int argc, char** argv)
               caractereActuel = fgetc(fichier);
               printf("%c", caractereActuel);
             } while (caractereActuel != EOF);
-
             fclose(fichier);
           }
         break;
@@ -49,9 +45,7 @@ int main(int argc, char** argv)
           printf("TEST2");
           FILE* fichier2 = NULL;
           int caractereActuel2 = 0;
-
           fichier2 = fopen("EXIASAVER1_PBM/2.pbm", "r");
-
           if (fichier != NULL)
           {
             do
@@ -59,15 +53,38 @@ int main(int argc, char** argv)
               caractereActuel2 = fgetc(fichier2);
               printf("%c", caractereActuel2);
             } while (caractereActuel2 != EOF);
-
             fclose(fichier2);
           }
         break;
         case 3:
           printf("TEST3");
+          FILE* fichier3 = NULL;
+          int caractereActuel3 = 0;
+          fichier3 = fopen("EXIASAVER1_PBM/3.pbm", "r");
+          if (fichier != NULL)
+          {
+            do
+            {
+              caractereActuel3 = fgetc(fichier3);
+              printf("%c", caractereActuel3);
+            } while (caractereActuel3 != EOF);
+            fclose(fichier3);
+          }
         break;
         case 4:
           printf("TEST4");
+          FILE* fichier4 = NULL;
+          int caractereActuel4 = 0;
+          fichier4 = fopen("EXIASAVER1_PBM/4.pbm", "r");
+          if (fichier != NULL)
+          {
+            do
+            {
+              caractereActuel4 = fgetc(fichier4);
+              printf("%c", caractereActuel4);
+            } while (caractereActuel4 != EOF);
+            fclose(fichier4);
+          }
         break;
       }
     }
