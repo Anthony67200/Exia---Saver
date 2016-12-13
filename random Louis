@@ -17,7 +17,7 @@ int main(int argc, char** argv)
     int choix=rand()%3+1;
 
     int ch_image;
-    ch_image = rand()%4+1;
+    ch_image = rand()%2+1;
 
     /*--------Condition en fonction du mode choisis--------*/
 
@@ -28,15 +28,22 @@ int main(int argc, char** argv)
       {
         case 1:
           printf("TEST1");
+
           FILE* fichier = NULL;
-          int  c =0;
+          int caractereActuel = 0;
+
           fichier = fopen("EXIASAVER1_PBM/1.pbm", "r");
 
-          c = fgetc(fichier);
-          printf("%c", c);
-          while (c != EOF);
+          if (fichier != NULL)
+          {
+            do
+            {
+              caractereActuel = fgetc(fichier);
+              printf("%c", caractereActuel);
+            } while (caractereActuel != EOF);
 
-          fclose(fichier);
+            fclose(fichier);
+          }
         break;
         case 2:
           printf("TEST2");
@@ -47,8 +54,8 @@ int main(int argc, char** argv)
           c1 = fgetc(fichier1);
           printf("%c", c1);
           while (c1 != EOF);
-
           fclose(fichier1);
+          getchar();
         break;
         case 3:
           printf("TEST3");
