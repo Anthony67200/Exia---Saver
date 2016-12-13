@@ -96,11 +96,11 @@ int main(int argc, char** argv)
     {
       printf("Lancement du type intéractif ! \n");
     }
-saveDate(ch_image,choix);
+sauvegarde(ch_image,choix);
 return 0;
 }
 
-void saveDate(int type, int nombrePicture)
+void sauvegarde(int typefichier, int image_ch)
 {
   FILE* historique = NULL; // Initialise le pointeur à NULL
   historique = fopen("historique.txt", "r+"); // Ouvre le fichier historique
@@ -120,9 +120,6 @@ void saveDate(int type, int nombrePicture)
 
     /*Permet d'écrire la date dans le bon format dans l'historique
     fseek 25 permet d'éviter de lire les 25 premiers caractères*/
-
-    int typefichier;
-    int image_ch;
 
     if (typefichier == 1)
     {
