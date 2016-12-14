@@ -7,9 +7,11 @@
 int main(int argc, char** argv)
 {
 
-    if(argv[1]!= NULL)
+    if(argv[1] != NULL)
     {
-    printf("------ Menu Statistique ------\n\n");
+    system("clear");
+    int nombre;
+    printf("            ------            Menu Statistique            ------\n\n");
     printf("1.Trier par Date\n");
     printf("2.Trier par Type\n");
     printf("3.Trier par Extension\n");
@@ -18,15 +20,9 @@ int main(int argc, char** argv)
 
     FILE* stat = NULL; // Initialise le pointeur à NULL
     stat = fopen("historique.txt", "r+"); // Ouvre le fichier historique
-    int menu;
-    int nombre;
 
       scanf("%d", nombre);
-      /*
-      if(argv[2] != NULL)
-      {
-      */
-        switch (menu)
+        switch (nombre)
         {
           case 1:
             printf("MENU 1");
@@ -38,7 +34,7 @@ int main(int argc, char** argv)
             printf("MENU 3");
           break;
         }
-    // }
+
     return 0;
     }
 
