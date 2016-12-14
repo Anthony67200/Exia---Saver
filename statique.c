@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <string.h>
+#include <ncurses.h>
+
 
 int main(int argc, char *argv[])
 {
+char nombre=argv[1][0];
 FILE *image;
 char str[200];
 int a=0;
@@ -13,7 +16,6 @@ int xInitial;
 int yInitial;
 char tableau[100][30];
 char ecran[80][24];
-char nombre=argv[1][0];
     switch(nombre){
     case '1':
     image = fopen("1.pbm" , "r");
@@ -29,7 +31,7 @@ char nombre=argv[1][0];
     break;
     case '5':
     image = fopen("5.pbm" , "r");
-    break;
+    break;}
 if(image == NULL)
 {
 perror("Error opening file");
@@ -113,13 +115,19 @@ while (y < 24)
     printf("\n");
 y++;
 x=0;
-
 }}
 else
 printf("Ce n'est pas le bon format, vérifiez qu'il s'agit bien d'un .pbm avec le nombre magique P1");
 }
 
+initscr();
+cbreak();
+noecho();
+char c= getchar();
+if(c!='\0')
+{
+endwin();
 fclose(image);
-
+system("clear");
 return(0);
-}
+}}
