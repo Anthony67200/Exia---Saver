@@ -18,14 +18,24 @@ int main(int argc, char** argv)
 
     printf("Choissisez le menu que vous souhaitez afficher\n");
 
-    FILE* stat = NULL; // Initialise le pointeur à NULL
-    stat = fopen("historique.txt", "r+"); // Ouvre le fichier historique
+    scanf("%d", &nombre);
 
-      scanf("%d", nombre);
         switch (nombre)
         {
           case 1:
-            printf("MENU 1");
+          printf("");
+            FILE* stat = NULL;
+            int caractere = 0;
+            stat = fopen("historique.txt", "r");
+            if (stat != NULL)
+            {
+              do
+              {
+                caractere = fgetc(stat);
+                printf("%c", caractere);
+              } while (caractere != EOF);
+              fclose(stat);
+            }
           break;
           case 2:
             printf("MENU 2");
