@@ -3,6 +3,7 @@
 #include <time.h> // Bibliothèque pour le Rand
 #include <sys/stat.h>
 #include "launcher.h"
+#include "dynamique.h"
 
 int main(int argc, char** argv)
 {
@@ -20,6 +21,7 @@ int main(int argc, char** argv)
 
     scanf("%d", &nombre);
 
+    
         switch (nombre)
         {
           case 1:
@@ -39,9 +41,10 @@ int main(int argc, char** argv)
           break;
           case 2:
             printf("MENU 2");
+
           break;
           case 3:
-            printf("MENU 3");
+            printf("d");
           break;
         }
 
@@ -52,8 +55,6 @@ int main(int argc, char** argv)
     /*--------Nombre Random--------*/
     srand (time(NULL));
     int choix=rand()%3+1;
-
-    printf("%d", choix);
 
     int ch_image;
     ch_image = rand()%4+1;
@@ -130,6 +131,7 @@ int main(int argc, char** argv)
     else if (choix == 2)
     {
       printf("Lancement du type dynamique ! \n");
+      dynamique();
     }
     else if (choix == 3)
     {
