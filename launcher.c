@@ -12,30 +12,77 @@ int main(int argc, char** argv)
 
     if(argv[1] != NULL)
     {
-    system("clear"); //Permet de vider la console au démarrage du mode stat
+    	system("clear"); //Permet de vider la console au démarrage du mode stat
 	    
-    int nombre;
+    	int nombre;
 	    
-    printf("            ------            Menu Statistique            ------\n\n");
-    printf("Bienvenue dans le mode statistique\n\n");
-    printf("Choissisez un mode de tri pour afficher l'historique parmis les choix disponible\n\n");
-    printf("1.Trier par Dates\n");
-    printf("2.Trier par Types\n");
-    printf("3.Trier par Paramètres\n");
+    	printf("            ------            Menu Statistique            ------\n\n");
+    	printf("Bienvenue dans le mode statistique\n\n");
+    	printf("Choissisez un mode de tri pour afficher l'historique parmis les choix disponible\n\n");
+    	printf("1.Trier par Dates\n");
+    	printf("2.Trier par Types\n");
+    	printf("3.Trier par Paramètres\n");
 
-    scanf("%d", &nombre);
+    	scanf("%d", &nombre);
+	    
+	FILE *fichier = NULL;
+    	fichier = fopen("historique.txt", "r");
+    	int i = 0;
+    	char* date = NULL;
+    	char* type= NULL;
+    	char* extension = NULL;
+
+    	date = malloc(0 *sizeof(char));
+    	type = malloc(0 *sizeof(char));
+    	extension = malloc(0 *sizeof(char));
+
+    	char* tab = NULL;
+    	tab = (char *) malloc(1000);
 
         switch (nombre)
         {
-          case 1:
-	    printf("-----  MENU 1  -----");
-          break;
-          case 2:
-            printf("-----  MENU 2  -----");
-          break;
-          case 3:
-            printf("-----  MENU 3  -----");
-          break;
+          	case 1:
+	    		printf("-----  MENU 1  -----");
+			
+			while(fgets(tab, 1000,fichier) != NULL)
+                	{
+                    		strcpy(&date[0],strtok(tab,";"));
+                    		strcpy(&type[0],strtok(NULL,";"));
+                    		strcpy(&extension[0],strtok(NULL,";"));
+
+                    		printf ("%s, %s, %s \n", date, type, extension);
+
+                    		i++;
+                  	}
+          	break;
+          	case 2:
+            		printf("-----  MENU 2  -----");
+			
+			while(fgets(tab, 1000,fichier) != NULL)
+            		{
+                		strcpy(&date[0],strtok(tab,";"));
+                		strcpy(&type[0],strtok(NULL,";"));
+                		strcpy(&extension[0],strtok(NULL,";"));
+
+                		printf ("%s, %s, %s \n", type, date, extension);
+
+                		i++;
+              		}
+          	break;
+          	case 3:
+            		printf("-----  MENU 3  -----");
+			
+			while(fgets(tab, 1000,fichier) != NULL)
+          		{
+              			strcpy(&date[0],strtok(tab,";"));
+              			strcpy(&type[0],strtok(NULL,";"));
+              			strcpy(&extension[0],strtok(NULL,";"));
+
+              			printf ("%s, %s, %s \n", extension, date, type);
+
+              			i++;
+            		}
+          	break;
         }
 
     return 0;
