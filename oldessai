@@ -168,33 +168,36 @@ void sauvegarde(int fichier, int image)
      {
        case 1:
          fseek(historique, 0, SEEK_END);
-         fprintf(historique, "%s;%d;EXIASAVER1_PBM/1.pbm\n",s_Date,fichier);
+         fprintf(historique, "%s;%d;EXIASAVER1_PBM/1.pbm;\n",s_Date,fichier);
        break;
        case 2:
          fseek(historique, 0, SEEK_END);
-         fprintf(historique, "%s;%d;EXIASAVER1_PBM/2.pbm\n",s_Date,fichier);
+         fprintf(historique, "%s;%d;EXIASAVER1_PBM/2.pbm;\n",s_Date,fichier);
        break;
        case 3:
          fseek(historique, 0, SEEK_END);
-         fprintf(historique, "%s;%d;EXIASAVER1_PBM/3.pbm\n",s_Date,fichier);
+         fprintf(historique, "%s;%d;EXIASAVER1_PBM/3.pbm;\n",s_Date,fichier);
        break;
        case 4:
          fseek(historique, 0, SEEK_END);
-         fprintf(historique, "%s;%d;EXIASAVER1_PBM/4.pbm\n",s_Date,fichier);
+         fprintf(historique, "%s;%d;EXIASAVER1_PBM/4.pbm;\n",s_Date,fichier);
+
        break;
      }
    }
    else if (fichier == 2)
    {
      fseek(historique,0, SEEK_END);
-     fprintf(historique, "%s;%d\n",s_Date,fichier);
+     fprintf(historique, "%s;%d;rien;\n",s_Date,fichier);
    }
    else if (fichier == 3)
    {
      fseek(historique,0, SEEK_END);
-     fprintf(historique, "%s;%d\n",s_Date,fichier);
+     fprintf(historique, "%s;%d;rien;\n",s_Date,fichier);
    }
 
   }
-  return 0;
+  return;
 }
+
+
