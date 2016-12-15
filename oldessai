@@ -141,7 +141,7 @@ return 0;
 
 }
 
-id sauvegarde(int fichier, int image)
+void sauvegarde(int fichier, int image)
 {
   FILE* historique = NULL; // Initialise le pointeur à NULL
   historique = fopen("historique.txt", "r+"); // Ouvre le fichier historique
