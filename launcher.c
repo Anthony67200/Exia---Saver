@@ -180,19 +180,19 @@ mais aussi de récuperer l'image qui a été choisis pour le mode statique.
      {
        case 1:
          fseek(historique, 0, SEEK_END);
-         fprintf(historique, "%s;%d;EXIASAVER1_PBM/1.pbm\n",s_Date,fichier);
+         fprintf(historique, "%s;%d;EXIASAVER1_PBM/1.pbm;\n",s_Date,fichier);
        break;
        case 2:
          fseek(historique, 0, SEEK_END);
-         fprintf(historique, "%s;%d;EXIASAVER1_PBM/2.pbm\n",s_Date,fichier);
+         fprintf(historique, "%s;%d;EXIASAVER1_PBM/2.pbm;\n",s_Date,fichier);
        break;
        case 3:
          fseek(historique, 0, SEEK_END);
-         fprintf(historique, "%s;%d;EXIASAVER1_PBM/3.pbm\n",s_Date,fichier);
+         fprintf(historique, "%s;%d;EXIASAVER1_PBM/3.pbm;\n",s_Date,fichier);
        break;
        case 4:
          fseek(historique, 0, SEEK_END);
-         fprintf(historique, "%s;%d;EXIASAVER1_PBM/4.pbm\n",s_Date,fichier);
+         fprintf(historique, "%s;%d;EXIASAVER1_PBM/4.pbm;\n",s_Date,fichier);
        break;
      }
    }
@@ -200,13 +200,13 @@ mais aussi de récuperer l'image qui a été choisis pour le mode statique.
    else if (fichier == 2)
    {
      fseek(historique,0, SEEK_END);
-     fprintf(historique, "%s;%d\n",s_Date,fichier);
+     fprintf(historique, "%s;%d;rien;\n",s_Date,fichier);
    }
    // Permet d'écrire la date ainsi que le type d'écran qui a été choisis pour le mode intéractif.
    else if (fichier == 3)
    {
      fseek(historique,0, SEEK_END);
-     fprintf(historique, "%s;%d\n",s_Date,fichier);
+     fprintf(historique, "%s;%d;rien;\n",s_Date,fichier);
    }
 
   }
