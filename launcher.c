@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h> // Bibliothèque pour le Rand
-#include <sys/stat.h>
-#include <sys/types.h>
+#include <sys/stat.h> // Bibliothèque utiliser pour le stat
+#include <sys/types.h> // Bibliothèque 
 #include <unistd.h>
-#include "launcher.h"
-#include <string.h>
+#include "launcher.h" // Bibliothèque permettant la sauvegarde de l'informations du choix du type d'écran ainsi que le choix aléatoire de l'image statique.
+#include <string.h> // Utiliser pour la manipulation de chaîne de caractére mais aussi pour diverses fonctions de manipulations mémoires.
 
 
 
@@ -90,11 +90,15 @@ int main(int argc, char** argv)
     return 1;
   }           // fin du if de début, et donc fin du programme
 
+
     system("clear"); // Permet de nettoyer la console
     /*--------Nombre Random--------*/
     srand (time(NULL));
-    int choix=rand()%3+1;
-
+    int choix=rand()%3+1; // Permet de donner un nombre aléatoire entre 1 et 3 pour générer un type d'écran de veille
+	
+	/* Permet de donner un nombre aléatoire entre 1 et 5 pour générer une image qui va être utiliser par le mode statique
+	   le launcher va donc transmettre les informations au type d'écran de veille statique pour que lui puisse afficher l'image
+	   au centre de l'écran */
     int ch_image;
     ch_image = rand()%5+1;
     sauvegarde(choix,ch_image);
@@ -104,6 +108,8 @@ int main(int argc, char** argv)
     {
       printf("Lancement du type statique ! \n");
 
+		/*Permet de faire appel au programme statique qui se trouve dans le répertoire statique pour exécuter une image en particulier
+		  pour ensuite pouvoir l'afficher à l'écran.*/
 		if(ch_image == 1)
 		{
 		execl ("Statique/statique","statique/statique","EXIASAVER1_PBM/1.pbm",NULL);
@@ -125,13 +131,14 @@ int main(int argc, char** argv)
 		execl ("Statique/statique","statique/statique","EXIASAVER1_PBM/5.pbm",NULL);
 		}
     }
-
-
+	
+	// Permet de faire appel au programme dynamique qui se trouve dans le répertoire dynamique pour pouvoir exécuter le programme et ainsi afficher l'heure
     else if (choix == 2)
     {
       printf("Lancement du type dynamique ! \n");
-	  execl ("Dynamique/dynamique","Dynamique/dynamique","",NULL);
+	  execl ("Dynamique/dynamique2","Dynamique/dynamique2","",NULL);
     }
+	// Permet d'afficher le message type intéractif sur la console
     else if (choix == 3)
     {
       printf("Lancement du type intéractif ! \n");
@@ -141,7 +148,7 @@ int main(int argc, char** argv)
 return 0;
 
 }
-
+ 
 void sauvegarde(int fichier, int image)  // fonction qui va réaliser la sauvegarde des statiqtiques dans le fichier "historique.txt"
 {
   FILE* historique = NULL; // Initialise le pointeur à NULL
@@ -163,6 +170,7 @@ void sauvegarde(int fichier, int image)  // fonction qui va réaliser la sauvega
     /*Permet d'écrire la date dans le bon format dans l'historique
     fseek 25 permet d'éviter de lire les 25 premiers caractères*/
 
+	// Permet d'écrire le nom du fichier PBM qui est utilisé pour le mode statique dans l'historique
     if (fichier == 1)
    {
     switch(image)
@@ -188,11 +196,13 @@ void sauvegarde(int fichier, int image)  // fonction qui va réaliser la sauvega
      }
 
    }
+   // Permet d'écrire la taille de l'heure dans le fichier historique
    else if (fichier == 2)
    {
-     fseek(historique,0, SEEK_END);
+     fseek(historique,0, SEEK_END); //fseek nous permet d'écrire à la fin du fichier historique à chaque fois grâce à la présence du SEEK_END
      fprintf(historique, "%s;%d;5x3;\n",s_Date,fichier);
    }
+   // Permet d'écrire l'extension dans le fichier historique
    else if (fichier == 3)
    {
      fseek(historique,0, SEEK_END);
