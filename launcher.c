@@ -46,9 +46,9 @@ int main(int argc, char** argv)
 
                 while(fgets(tab, 1000,fichier) != NULL)   // boucle qui va lire les lignes du fichier historique jusqu'à la fin des lignes
                 {
-                    strcpy(&date[0],strtok(tab,";"));  // va copier la ligne jusqu'au carractaire ";" dasn le tableau date
-                    strcpy(&type[0],strtok(NULL,";"));  // va copier la ligne jusqu'au carractaire ";" dasn le tableau type
-                    strcpy(&extension[0],strtok(NULL,";"));  // va copier la ligne jusqu'au carractaire ";" dasn le tableau extension
+                    strcpy(&date[0],strtok(tab,";"));  // va copier la ligne jusqu'au carractère ";" dans le tableau date
+                    strcpy(&type[0],strtok(NULL,";"));  // va copier la ligne jusqu'au carractère ";" dans le tableau type
+                    strcpy(&extension[0],strtok(NULL,";"));  // va copier la ligne jusqu'au carractère ";" dans le tableau extension
 
                     printf ("%s, %s, %s \n", date, type, extension);  // affichage du tableau date, type et extension
 
