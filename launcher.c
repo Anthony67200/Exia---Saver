@@ -13,39 +13,28 @@ int main(int argc, char** argv)
     if(argv[1] != NULL)
     {
     system("clear"); //Permet de vider la console au démarrage du mode stat
+	    
     int nombre;
+	    
     printf("            ------            Menu Statistique            ------\n\n");
-    printf("1.Trier par Date\n");
-    printf("2.Trier par Type\n");
-    printf("3.Trier par Extension\n");
-
-    printf("Choissisez le menu que vous souhaitez afficher\n");
+    printf("Bienvenue dans le mode statistique\n\n");
+    printf("Choissisez un mode de tri pour afficher l'historique parmis les choix disponible\n\n");
+    printf("1.Trier par Dates\n");
+    printf("2.Trier par Types\n");
+    printf("3.Trier par Paramètres\n");
 
     scanf("%d", &nombre);
 
         switch (nombre)
         {
           case 1:
-          printf("");
-            FILE* stat = NULL;
-            int caractere = 0;
-            stat = fopen("historique.txt", "r");
-            if (stat != NULL)
-            {
-              do
-              {
-                caractere = fgetc(stat);
-                printf("%c", caractere);
-              } while (caractere != EOF);
-              fclose(stat);
-            }
+	    printf("-----  MENU 1  -----");
           break;
           case 2:
-            printf("MENU 2");
-
+            printf("-----  MENU 2  -----");
           break;
           case 3:
-            printf("d");
+            printf("-----  MENU 3  -----");
           break;
         }
 
