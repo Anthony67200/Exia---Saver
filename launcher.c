@@ -12,7 +12,7 @@ int main(int argc, char** argv)
 
     if(argv[1] != NULL)
     {
-    system("clear");
+    system("clear"); //Permet de vider la console au démarrage du mode stat
     int nombre;
     printf("            ------            Menu Statistique            ------\n\n");
     printf("1.Trier par Date\n");
@@ -52,62 +52,69 @@ int main(int argc, char** argv)
     return 0;
     }
 
-    system("clear"); // Permet de nettoyer la console
+    system("clear"); // Permet de vider la console
     /*--------Nombre Random--------*/
     srand (time(NULL));
-    int choix=rand()%3+1;
+    int choix=rand()%3+1; // Permet de choisir un screensaver de manière aléatoire
 
     int ch_image;
-    ch_image = rand()%5+1;
+    ch_image = rand()%5+1; // Permet de choisir un nombre entre 1 et 5 pour les images statiques.
 
 
     /*--------Condition en fonction du mode choisis--------*/
-    if (choix == 1)
+    if (choix == 1) // Permet de lancer le mode statique
     {
       printf("Lancement du type statique ! \n");
 
-		if(ch_image == 1)
+		if(ch_image == 1) //Permet de choisir l'image pbm 1 dans le fichier EXIASAVER1_PBM
 		{
 		execl ("Statique/statique","statique/statique","EXIASAVER1_PBM/1.pbm",NULL);
 		}
-		if(ch_image == 2)
+		if(ch_image == 2) //Permet de choisir l'image pbm 2 dans le fichier EXIASAVER1_PBM
 		{
 		execl ("Statique/statique","statique/statique","EXIASAVER1_PBM/2.pbm",NULL);
 		}
-		if(ch_image == 3)
+		if(ch_image == 3) //Permet de choisir l'image pbm 3 dans le fichier EXIASAVER1_PBM
 		{
 		execl ("Statique/statique","statique/statique","EXIASAVER1_PBM/3.pbm",NULL);
 		}
-		if(ch_image == 4)
+		if(ch_image == 4) //Permet de choisir l'image pbm 4 dans le fichier EXIASAVER1_PBM
 		{
 		execl ("Statique/statique","statique/statique","EXIASAVER1_PBM/4.pbm",NULL);
 		}
-		if(ch_image == 5)
+		if(ch_image == 5) //Permet de choisir l'image pbm 5 dans le fichier EXIASAVER1_PBM
 		{
 		execl ("Statique/statique","statique/statique","EXIASAVER1_PBM/5.pbm",NULL);
 		}
     }
 
 
-    else if (choix == 2)
+    else if (choix == 2) // Permet de lancer le screensaver dynamique
     {
       printf("Lancement du type dynamique ! \n");
+      /*Permet d'exécuter le programme du dynamique qui se trouve dans le répertoire
+      dynamique.*/
 	  execl ("Dynamique/dynamique2","Dynamique/dynamique2","",NULL);
     }
-    else if (choix == 3)
+    else if (choix == 3) // Permet de lancer le screensaver intéractif
     {
       printf("Lancement du type intéractif ! \n");
     }
-sauvegarde(choix,ch_image);
+sauvegarde(choix,ch_image); /*Permet de garder en mémoire les variables
+choix, ainsi que ch_image grâce à la bibliothèque launcher.h pour nous permettre
+de les utiliser dans la prochaine fonction.*/
 
 return 0;
 
 }
 
-void sauvegarde(int fichier, int image)
+void sauvegarde(int fichier, int image) /* Fais appelle à la fonction se trouvant dans la
+bibliothèque launcher.h .Pour nous permettre de récupérer les informations du choix de l'écran
+mais aussi de récuperer l'image qui a été choisis pour le mode statique.
+*/
 {
   FILE* historique = NULL; // Initialise le pointeur à NULL
-  historique = fopen("historique.txt", "r+"); // Ouvre le fichier historique
+  historique = fopen("historique.txt", "r+"); // Ouvre le fichier historique.txt qui peut lire et écrire.
 
   if (historique != NULL) // Permet de vérifier que le fichier soit bien ouvert.
   {
@@ -122,9 +129,13 @@ void sauvegarde(int fichier, int image)
     char s_Date[sizeof "JJ/MM/AAAA HH:MM:SS"];
     strftime (s_Date, sizeof s_Date, "%d/%m/%Y %H:%M:%S", &tm_Date);
 
-    /*Permet d'écrire la date dans le bon format dans l'historique
-    fseek 25 permet d'éviter de lire les 25 premiers caractères*/
+    //Permet d'écrire la date dans le bon format dans l'historique
 
+    /*
+    Permet d'écrire les informations concernant le mode statique directement dans le fichier historique en reprenant
+    les informations dans la fonction main. Cela permet d'écrire la date , le type d'écran
+    qui a été choisis , ainsi que le nom du fichier pour les images pbm pour le mode statique.
+    */
     if (fichier == 1)
    {
      switch(image)
@@ -147,11 +158,13 @@ void sauvegarde(int fichier, int image)
        break;
      }
    }
+   // Permet d'écrire la date , le type d'écran qui a été choisis pour le mode dynamique.
    else if (fichier == 2)
    {
      fseek(historique,0, SEEK_END);
      fprintf(historique, "%s;%d\n",s_Date,fichier);
    }
+   // Permet d'écrire la date ainsi que le type d'écran qui a été choisis pour le mode intéractif.
    else if (fichier == 3)
    {
      fseek(historique,0, SEEK_END);
