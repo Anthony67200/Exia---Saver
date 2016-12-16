@@ -105,7 +105,7 @@ int InitTime()
 					if (chaine[j] == '0')
         	                            chaine[j] = ' ';        		//On définit qu'un 0 affiche un espace
         	       			else if (chaine[j] == '1')
-        	                            	chaine[j] = 'X'; //On définit qu'un 1 affiche un X
+        	                            	chaine[j] = '@'; //On définit qu'un 1 affiche un X
         	                    }
 				x=x+1;
 				printf("%s", chaine);				//L'image est ensuite affiché ligne par ligne
