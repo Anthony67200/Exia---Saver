@@ -12,7 +12,7 @@
 int main(int argc, char** argv)
 {
 
-    if(argv[1] != NULL)  // si on tape quelque chose après l'executable, comme "-stats", la suite s'execute
+   if(argv[1] != NULL)  // si on tape quelque chose après l'executable, comme "-stats", la suite s'execute
     {
     system("clear");
     int nombre;  // initialise nombre
@@ -21,19 +21,22 @@ int main(int argc, char** argv)
     printf("2.Trier par Type\n");
     printf("3.Trier par Extension\n");
 
+
     printf("Choissisez le menu que vous souhaitez afficher\n");
 
-    scanf("%d", &nombre); // on choisit le nombre voulut pour le menu des Statistique.
-    FILE *fichier = NULL;  // initialise le pointeur fichier à NULL
+    scanf("%d", &nombre);                    // on choisit le nombre voulut pour le menu des Statistique.
+    FILE *fichier = NULL;                    // initialise le pointeur fichier à NULL
     fichier = fopen("historique.txt", "r");  // on ouvre le fichier historique.txt
-    int i = 0;   // initialisation de i
-    char* date = NULL;  // initialisation d'un pointeur sur date
-    char* type= NULL;    //initialisation d'un pointeur sur type
-    char* extension = NULL;   //initialisation d'un pointeur sur extension
+    int i = 0;                         // initialisation de i
+    int compteur;
+    char c;
+    char* date = NULL;                       // initialisation d'un pointeur sur date
+    char* type= NULL;                        //initialisation d'un pointeur sur type
+    char* extension = NULL;                  //initialisation d'un pointeur sur extension
 
-    date = malloc(0 *sizeof(char));  // on alloue un tableau dynamique à date
-    type = malloc(0 *sizeof(char));  //on alloue un tableau dynamique à type
-    extension = malloc(0 *sizeof(char));  //on alloue un tableau dynamique à extension
+    date = malloc(0 *sizeof(char));          // on alloue un tableau dynamique à date
+    type = malloc(0 *sizeof(char));         //on alloue un tableau dynamique à type
+    extension = malloc(0 *sizeof(char));    //on alloue un tableau dynamique à extension
 
     char* tab = NULL;   // initialisation de pointeur sur tab
     tab = (char *) malloc(1000);  // allocation du tableau de longeur 10000
@@ -46,9 +49,9 @@ int main(int argc, char** argv)
 
                 while(fgets(tab, 1000,fichier) != NULL)   // boucle qui va lire les lignes du fichier historique jusqu'à la fin des lignes
                 {
-                    strcpy(&date[0],strtok(tab,";"));  // va copier la ligne jusqu'au carractère ";" dans le tableau date
-                    strcpy(&type[0],strtok(NULL,";"));  // va copier la ligne jusqu'au carractère ";" dans le tableau type
-                    strcpy(&extension[0],strtok(NULL,";"));  // va copier la ligne jusqu'au carractère ";" dans le tableau extension
+                    strcpy(&date[0],strtok(tab,";"));  // va copier la ligne jusqu'au carractaire ";" dans le tableau date
+                    strcpy(&type[0],strtok(NULL,";"));  // va copier la ligne jusqu'au carractaire ";" dans le tableau type
+                    strcpy(&extension[0],strtok(NULL,";"));  // va copier la ligne jusqu'au carractaire ";" dans le tableau extension
 
                     printf ("%s, %s, %s \n", date, type, extension);  // affichage du tableau date, type et extension
 
@@ -56,17 +59,29 @@ int main(int argc, char** argv)
                   }
           break;
           case 2:  // le cas 2 qui va fonctionner comme le premier, seul change l'ordre d'affichage des tableaux.
-
+             fclose(fichier);
+        for(compteur=1;compteur<=3;compteur++)
+        {
+          fichier = fopen("historique.txt", "r");
+          if(compteur==1)
+          c='1';
+          if(compteur==2)
+          c='2';
+          if(compteur==3)
+          c='3';
             while(fgets(tab, 1000,fichier) != NULL)
             {
                 strcpy(&date[0],strtok(tab,";"));
                 strcpy(&type[0],strtok(NULL,";"));
                 strcpy(&extension[0],strtok(NULL,";"));
-
+                if(type[0]==c)
                 printf ("%s, %s, %s \n", type, date, extension);
 
                 i++;
               }
+               fclose(fichier);
+       }
+
 
           break;
           case 3:  // --------Cas 3 comme les deux premiers-------------
@@ -83,6 +98,7 @@ int main(int argc, char** argv)
             }
 
           break;
+
 
             fclose(fichier);  // On ferme le fichier ouvert au début.
         }
