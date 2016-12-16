@@ -49,38 +49,38 @@ int InitTime()
 		switch (Tableau[z]) //Switch parcourant tout le tableau contenant l'heure
 
 		{
-			case 0:
-				fichier1 = fopen("/home/coconus/Bureau/PBMDynamique/Number0.pbm", "r"); //la console ouvre un fichier en fonction de l'heure dans le tableau
+			case 0: //IL EST IMPORTANT DE PLACER LES FICHIERS DU PROGRAMME DANS UN ENDROIT GERE PAR LE $PATH, OU ALORS DE LE MODIFIER AVEC "export PATH=$PATH:/home/user/mes_prog" par exemple
+				fichier1 = fopen("$PATH/EXIASAVER_HOMER/EXIASAVER2_PBM/0.pbm", "r"); //la console ouvre un fichier en fonction de l'heure dans le tableau
 				break;
 			case 1:
-				fichier1 = fopen("/home/coconus/Bureau/PBMDynamique/Number1.pbm", "r");
+				fichier1 = fopen("$PATH/EXIASAVER_HOMER/EXIASAVER2_PBM/1.pbm", "r");
 				break;
 			case 2:
-				fichier1 = fopen("/home/coconus/Bureau/PBMDynamique/Number2.pbm", "r");
+				fichier1 = fopen("$PATH/EXIASAVER_HOMER/EXIASAVER2_PBM/2.pbm", "r");
 				break;
 			case 3:
-				fichier1 = fopen("/home/coconus/Bureau/PBMDynamique/Number3.pbm", "r");
+				fichier1 = fopen("$PATH/EXIASAVER_HOMER/EXIASAVER2_PBM/3.pbm", "r");
 				break;
 			case 4:
-				fichier1 = fopen("/home/coconus/Bureau/PBMDynamique/Number4.pbm", "r");
+				fichier1 = fopen("$PATH/EXIASAVER_HOMER/EXIASAVER2_PBM/4.pbm", "r");
 				break;
 			case 5:
-				fichier1 = fopen("/home/coconus/Bureau/PBMDynamique/Number5.pbm", "r");
+				fichier1 = fopen("$PATH/EXIASAVER_HOMER/EXIASAVER2_PBM/5.pbm", "r");
 				break;
 			case 6:
-				fichier1 = fopen("/home/coconus/Bureau/PBMDynamique/Number6.pbm", "r");
+				fichier1 = fopen("$PATH/EXIASAVER_HOMER/EXIASAVER2_PBM/6.pbm", "r");
 				break;
 			case 7:
-				fichier1 = fopen("/home/coconus/Bureau/PBMDynamique/Number7.pbm", "r");
+				fichier1 = fopen("$PATH/EXIASAVER_HOMER/EXIASAVER2_PBM/7.pbm", "r");
 				break;
 			case 8:
-				fichier1 = fopen("/home/coconus/Bureau/PBMDynamique/Number8.pbm", "r");
+				fichier1 = fopen("$PATH/EXIASAVER_HOMER/EXIASAVER2_PBM/8.pbm", "r");
 				break;
 			case 9:
-				fichier1 = fopen("/home/coconus/Bureau/PBMDynamique/Number9.pbm", "r");
+				fichier1 = fopen("$PATH/EXIASAVER_HOMER/EXIASAVER2_PBM/9.pbm", "r");
 				break;
-			case 20:
-				fichier1 = fopen("/home/coconus/Bureau/PBMDynamique/doublepoints.pbm", "r");
+			case 42:
+				fichier1 = fopen("$PATH/EXIASAVER_HOMER/EXIASAVER2_PBM/doublepoints.pbm", "r");
 				break;
 		}
 
